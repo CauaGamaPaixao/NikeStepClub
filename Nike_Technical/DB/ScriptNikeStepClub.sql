@@ -10,35 +10,29 @@ senha VARCHAR (45),
 dtNascimento DATE
 );
 
-CREATE TABLE JogoMemoria (
-idJogoMemoria INT PRIMARY KEY AUTO_INCREMENT,
-dtTentativa DATE
-) AUTO_INCREMENT = 100;
-
-CREATE TABLE Tentativa (
-idTentativa INT,
-horaInicio TIME,
-horaFim TIME,
-tentativa_erro INT,
-fkUsuario INT,
-fkJogoMemoria INT,
-CONSTRAINT UsuarioTentativa
-	FOREIGN KEY (fkUsuario)
-		REFERENCES Usuario (idUsuario),
-CONSTRAINT JogoMemoriaTentativa
-	FOREIGN KEY (fkJogoMemoria)	
-		REFERENCES JogoMemoria (idJogoMemoria),
-CONSTRAINT pkComposta
-	PRIMARY KEY (idTentativa, fkUsuario, fkJogoMemoria)
-);
-
 CREATE TABLE Tenis (
 idTenis INT PRIMARY KEY AUTO_INCREMENT,
 modelo VARCHAR (45),
 colorway VARCHAR (45),
 dtLancamento DATE,
-fkJogoMemoria INT,
-CONSTRAINT JogoMemoriaTenis
-	FOREIGN KEY (fkJogoMemoria)
-		REFERENCES JogoMemoria (idJogoMemoria)
+tipo VARCHAR (45),
+HOF INT,
+CONSTRAINT chkHOF
+	CHECK (HOF IN (0, 1))
+);
+
+CREATE TABLE Inventario (
+idInventario INT,
+fKUsuario INT,
+fkTenis INT,
+quantidade INT,
+valor DECIMAL (8, 2),
+CONSTRAINT pkComposta
+	PRIMARY KEY (idInventario, fkUsuario, fkTenis),
+CONSTRAINT UsuarioInventario
+	FOREIGN KEY (fkUsuario)
+		REFERENCES Usuario (idUsuario),
+CONSTRAINT TenisInventario
+	FOREIGN KEY (fkTenis)
+		REFERENCES Tenis (idTenis)
 );
