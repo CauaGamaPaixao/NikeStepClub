@@ -15,8 +15,8 @@ html {
 }
 
 .navbar{
-    list-style: none;
     display: flex;
+    list-style: none;
     align-items: center; 
     color: #FFFFFF; 
     width: 1572px;
@@ -33,6 +33,7 @@ html {
     text-decoration: none;
     justify-content: space-around;
     font-size: large;
+    transition: trasnform 0.3s ease-in-out;
 }
 
 .agora a{
@@ -238,6 +239,14 @@ html {
     justify-content: center;
     align-items: center;
     margin-right: 120px;
+}
+
+.botaoroll a {
+    transition: transform 0.3s ease-in-out;
+}
+
+.botaoroll a:hover {
+    transform: scale(1.2);
 }
 
 /* CONTEUDO FIM */
