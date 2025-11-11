@@ -98,6 +98,7 @@ body {
 }
 
 .botao button {
+    background-color: #FAF9F6;
     border-radius: 20px;
     border-style: groove;
     border: solid 2px;
