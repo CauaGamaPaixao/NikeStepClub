@@ -53,7 +53,7 @@ body {
     justify-content: flex-start;
     align-items: center;
     width: 1700px;
-    height: 980px;
+    height: 100%;
     border-radius: 15px;
     background-color: #D9D9D9;
 }
@@ -109,7 +109,7 @@ body {
     background-color: #FFFFFF;
 }
 
-.cardConteudo button {
+.cardConteudo .button {
     margin-top: 30px;
     border-radius: 15px;
     border-style: none;
@@ -124,7 +124,7 @@ body {
     color: black;
 }
 
-.cardConteudo button:hover {
+.cardConteudo .button:hover {
     cursor: pointer;
     background-color: #49663A;
     color: #FFFFFF;

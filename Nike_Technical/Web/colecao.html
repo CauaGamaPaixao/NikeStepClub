@@ -44,17 +44,17 @@
                     <div class="cardTitulo">Jordan 4 “University Blue”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/Jordan4UniBlue.png" alt="" width="220px"></div>
-                        <button onclick="armazenar()">ADICIONAR</button>
+                        <input id="jordan_jordan4uniblue" class="button" type="checkbox">
                     </div>
                     <div class="cardTitulo">Nike Kobe 6 Protro “Grinch Green Apple”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/KobeGrinch.png" alt="" width="220px"></div>
-                        <button onclick="armazenar()">ADICIONAR</button>
+                        <input id="nike_kobe6" class="button" type="checkbox">
                     </div>
                     <div class="cardTitulo">Nike Ja 1 “Red Stardust”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/NikeJA1.png" alt="" width="220px"></div>
-                        <button onclick="armazenar()">ADICIONAR</button>
+                        <input id="nike_ja1" class="button" type="checkbox">
                     </div>
                 </div>
 
@@ -62,17 +62,17 @@
                     <div class="cardTitulo">Nike Air Zoom Alphafly 6 “Coconut Milk”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/NikeAlphafly.png" alt="" width="220px"></div>
-                        <button onclick="armazenar()">ADICIONAR</button>
+                        <input id="nike_airzoomalpha" class="button" type="checkbox">
                     </div>
                     <div class="cardTitulo">Air Max 95 “Neon Yellow”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/AirMax95.png" alt="" width="220px"></div>
-                        <button onclick="armazenar()">ADICIONAR</button>
+                        <input id="nike_arimaxneon" class="button" type="checkbox">
                     </div>
                     <div class="cardTitulo">Nike Air Zoom Pegasus “Orange Crimson”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/AirZoom.png" alt="" width="220px"></div>
-                        <button onclick="armazenar()">ADICIONAR</button>
+                        <input id="nike_airzoompegasus" class="button" type="checkbox">
                     </div>
                 </div>
 
@@ -80,17 +80,17 @@
                     <div class="cardTitulo">Air Jordan 3 “Fire Red”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/AirJordan3.png" alt="" width="190px"></div>
-                        <button onclick="armazenar()">ADICIONAR</button>
+                        <input id="jordan_jordan3firered" class="button" type="checkbox">
                     </div>
                     <div class="cardTitulo">Air Jordan 4 “Thunder”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/AirJordan4Thunder.png" alt="" width="190px"></div>
-                        <button onclick="armazenar()">ADICIONAR</button>
+                        <input id="jordan_jordan4thunder" class="button" type="checkbox">
                     </div>
                     <div class="cardTitulo">Nike Air Max TW “Racer Blue”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/AirMaxTW.png" alt="" width="220px"></div>
-                        <button onclick="armazenar()">ADICIONAR</button>
+                        <input id="nike_airmaxtw" class="button" type="checkbox">
                     </div>
                 </div>
 
@@ -98,25 +98,102 @@
                     <div class="cardTitulo">Air Jordan 1 Low “Reverse Mocha”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/AirJordan1ReverseMocha.png" alt="" width="220px"></div>
-                        <button onclick="armazenar()">ADICIONAR</button>
+                        <input id="jordan_airjordan1low" class="button" type="checkbox">
                     </div>
                     <div class="cardTitulo">NOCTA x Nike Hot Step 2 “Total White “</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/NikeHotStep2.png" alt="" width="220px"></div>
-                        <button onclick="armazenar()">ADICIONAR</button>
+                        <input id="nike_hotstep" class="button" type="checkbox">
                     </div>
                     <div class="cardTitulo">Air Jordan 1 High “Bred Toe”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/AirJordan1BredToe.png" alt="" width="220px"></div>
-                        <button onclick="armazenar()">ADICIONAR</button>
+                        <input id="jordan_jordan1high" class="button" type="checkbox">
                     </div>
                 </div>
-            </div>               
+            </div>
+            <button onclick="montar()">Montar Coleção</button>
+            <div id="div_mensagem"></div>               
         </div>
     </div>
 </body>
 </html>
 
+
 <script>
+
+    var Jordan4UniBlue = 1;
+    var NikeKobe06 = 2;
+    var NikeJA1 = 3;
+    var NikeAirZoomAlpha = 4;
+    var NikeAirMaxNeon = 5;
+    var NikeAirZoomPegasus = 6;
+    var Jordan3FireRed = 7;
+    var Jordan4Thunder = 8;
+    var NikeAirMaxTW = 9;
+    var Jordan1Low = 10;
+    var NikeHotStep = 11;
+    var Jordan1High = 12;
+    var mensagem = ``;
+
+    function montar (){
+        listaModelos = [];
+
+        if (jordan_jordan4uniblue.checked){
+            listaModelos.push(Jordan4UniBlue)
+            mensagem += `Jordan 4 University Blue adicionado a coleção<br>`
+        };
+        if (nike_kobe6.checked){
+            listaModelos.push(NikeKobe06)
+            mensagem += `Kobe 06 adicionado a coleção<br>`
+        };
+        if (nike_ja1.checked){
+            listaModelos.push(NikeJA1)
+            mensagem += `Nike JA1 adicionado a coleção<br>`
+        };
+        if (nike_airzoomalpha.checked){
+            listaModelos.push(NikeAirZoomAlpha)
+            mensagem += `Nike Air Zoom Alphafly adicionado a coleção<br>`
+        };
+        if (nike_arimaxneon.checked){
+            listaModelos.push(NikeAirMaxNeon)
+            mensagem += `Nike Air Max Neon Yellow<br>`
+        };
+        if (nike_airzoompegasus.checked){
+            listaModelos.push(NikeAirZoomPegasus)
+            mensagem += `Nike Air Zoom Pegasus adicionado a coleção<br>`
+        };
+        if (jordan_jordan3firered.checked){
+            listaModelos.push(Jordan3FireRed)
+            mensagem += `Jordan 3 Fire Red adicionado a coleção<br>`
+        };
+        if (jordan_jordan4thunder.checked){
+            listaModelos.push(Jordan4Thunder)
+            mensagem += `Jordan 4 Thunder adicionado a coleção<br>`
+        };
+        if (nike_airmaxtw.checked){
+            listaModelos.push(NikeAirMaxTW)
+            mensagem += `Air Max TW adicionado a coleção<br>`
+        };
+        if (jordan_airjordan1low.checked){
+            listaModelos.push(Jordan1Low)
+            mensagem += `Jordan 1 Low adicionado a coleção<br>`
+        };
+        if (nike_hotstep.checked){
+            listaModelos.push(NikeHotStep)
+            mensagem += `Nike Hot Step adicionado a coleção<br>`
+        };
+        if (jordan_jordan1high.checked){
+            listaModelos.psuh(Jordan1High)
+            mensagem += `Jordan 1 High adicionado a coleção<br>`
+        };
+
+        
+        div_mensagem.innerHTML = mensagem;
+
+
+    }
+
+    
 
 </script>
