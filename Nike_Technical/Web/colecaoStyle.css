@@ -109,13 +109,14 @@ body {
     background-color: #FFFFFF;
 }
 
-.cardConteudo .button {
-    margin-top: 30px;
+.button {
+    margin-top: 50px;
     border-radius: 15px;
     border-style: none;
     width: 200px;
     height: 35px;
-    color: #D3AF37;
+    background-color: #D3AF37;
+    color: #FFFFFF;
     font-weight: bold;
     transition: all 0.3s ease-in-out;
 }
@@ -124,11 +125,35 @@ body {
     color: black;
 }
 
-.cardConteudo .button:hover {
+.mensagemColecao {
+    text-align: center;
+}
+
+.mensagemRelatorio {
+    text-align: center;
+}
+
+.botoes {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.button:disabled {
+    background-color: #FAF9F6;
+    color: #D3AF37;
+}
+
+input[type=checkbox]{
     cursor: pointer;
-    background-color: #49663A;
-    color: #FFFFFF;
+    width: 30px;
+    height: 40px;
+    margin-top: 25px;
 
 }
+
 
 /* CONTEUDO FIM */
