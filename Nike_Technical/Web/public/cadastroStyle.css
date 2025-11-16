@@ -54,7 +54,7 @@ body {
     background-color: #FAF9F6;
     border-radius: 15px;
     width: 660px;
-    height: 580px;
+    height: 650px;
     margin-right: 110px;
     justify-content: flex-end;
     
@@ -62,7 +62,7 @@ body {
 
 .imagemLateral img{
     display: flex;
-    height: 580px;
+    height: 650px;
     width: 175px;
 }
 

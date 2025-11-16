@@ -142,6 +142,10 @@ body {
     justify-content: space-evenly;
 }
 
+.button:hover{
+    cursor: pointer;
+}
+
 .button:disabled {
     background-color: #FAF9F6;
     color: #D3AF37;
