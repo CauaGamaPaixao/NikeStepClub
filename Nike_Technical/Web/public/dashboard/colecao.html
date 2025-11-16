@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="colecaoStyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+      <div class="container">
+        <ul class="navbar">
+          <li>
+            <a href="index.html">NikeStepClub</a>
+          </li>
+          <li>
+            <a href="hof.html">Hall Of Fame</a>
+          </li>
+          <li>
+            <a href="index.html"><img src="assets/NikeLogo.png" alt="" width="50px"></li></a>
+          <li class="agora">
+            <a href="colecao.html">Coleção</a>
+          </li>
+          <li>
+            <a href="login.html">Login</a>
+          </li>
+          <li>
+            <a href="cadastro.html">Cadastro</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="colecao">
+        <div class="caixa">
+            <div class="caixaTitulo">
+                <span>MONTE SUA COLEÇÃO DOS <b style="color: #D3AF37;">SONHOS</b></span>
+            </div>
+            <div class="caixaGrid">
+                <div class="cardGrid">
+                    <div class="cardTitulo">Jordan 4 “University Blue”</div>
+                    <div class="cardConteudo">
+                        <div class="cardImagem"><img src="assets/Jordan4UniBlue.png" alt="" width="220px"></div>
+                        <input id="jordan_jordan4uniblue" type="checkbox">
+                    </div>
+                    <div class="cardTitulo">Nike Kobe 6 Protro “Grinch Green Apple”</div>
+                    <div class="cardConteudo">
+                        <div class="cardImagem"><img src="assets/KobeGrinch.png" alt="" width="220px"></div>
+                        <input id="nike_kobe6" type="checkbox">
+                    </div>
+                    <div class="cardTitulo">Nike Ja 1 “Red Stardust”</div>
+                    <div class="cardConteudo">
+                        <div class="cardImagem"><img src="assets/NikeJA1.png" alt="" width="220px"></div>
+                        <input id="nike_ja1" type="checkbox">
+                    </div>
+                </div>
+
+                <div class="cardGrid">
+                    <div class="cardTitulo">Nike Air Zoom Alphafly 6 “Coconut Milk”</div>
+                    <div class="cardConteudo">
+                        <div class="cardImagem"><img src="assets/NikeAlphafly.png" alt="" width="220px"></div>
+                        <input id="nike_airzoomalpha" type="checkbox">
+                    </div>
+                    <div class="cardTitulo">Air Max 95 “Neon Yellow”</div>
+                    <div class="cardConteudo">
+                        <div class="cardImagem"><img src="assets/AirMax95.png" alt="" width="220px"></div>
+                        <input id="nike_arimaxneon" type="checkbox">
+                    </div>
+                    <div class="cardTitulo">Nike Air Zoom Pegasus “Orange Crimson”</div>
+                    <div class="cardConteudo">
+                        <div class="cardImagem"><img src="assets/AirZoom.png" alt="" width="220px"></div>
+                        <input id="nike_airzoompegasus" type="checkbox">
+                    </div>
+                </div>
+
+                <div class="cardGrid">
+                    <div class="cardTitulo">Air Jordan 3 “Fire Red”</div>
+                    <div class="cardConteudo">
+                        <div class="cardImagem"><img src="assets/AirJordan3.png" alt="" width="190px"></div>
+                        <input id="jordan_jordan3firered" type="checkbox">
+                    </div>
+                    <div class="cardTitulo">Air Jordan 4 “Thunder”</div>
+                    <div class="cardConteudo">
+                        <div class="cardImagem"><img src="assets/AirJordan4Thunder.png" alt="" width="190px"></div>
+                        <input id="jordan_jordan4thunder" type="checkbox">
+                    </div>
+                    <div class="cardTitulo">Nike Air Max TW “Racer Blue”</div>
+                    <div class="cardConteudo">
+                        <div class="cardImagem"><img src="assets/AirMaxTW.png" alt="" width="220px"></div>
+                        <input id="nike_airmaxtw" type="checkbox">
+                    </div>
+                </div>
+
+                <div class="cardGrid">
+                    <div class="cardTitulo">Air Jordan 1 Low “Reverse Mocha”</div>
+                    <div class="cardConteudo">
+                        <div class="cardImagem"><img src="assets/AirJordan1ReverseMocha.png" alt="" width="220px"></div>
+                        <input id="jordan_airjordan1low" type="checkbox">
+                    </div>
+                    <div class="cardTitulo">NOCTA x Nike Hot Step 2 “Total White “</div>
+                    <div class="cardConteudo">
+                        <div class="cardImagem"><img src="assets/NikeHotStep2.png" alt="" width="220px"></div>
+                        <input id="nike_hotstep" type="checkbox">
+                    </div>
+                    <div class="cardTitulo">Air Jordan 1 High “Bred Toe”</div>
+                    <div class="cardConteudo">
+                        <div class="cardImagem"><img src="assets/AirJordan1BredToe.png" alt="" width="220px"></div>
+                        <input id="jordan_jordan1high" type="checkbox">
+                    </div>
+                </div>
+            </div>
+            <div class="botoes">
+            <button id="botaoMontar" class="button" onclick="montar()">Montar Coleção</button>
+            <button id="botaoGerar" class="button" onclick="gerar()">Gerar Relatório</button>
+            </div>
+            <br>
+            <div class="mensagemColecao" id="div_mensagem"></div>   
+            <br>
+            <div class="mensagemRelatorio" id="div_mensagemRelatorio"></div>            
+        </div>
+    </div>
+</body>
+</html>
+
+
+<script>
+    // Valores dos Tênis
+    var valorJordan4UniBlue = 2000;
+    var valorNikeKobe06 = 4000;
+    var valorNikeJA1 = 1200;
+    var valorNikeAirZoomAlpha = 1700;
+    var valorNikeAirMaxNeon = 1400;
+    var valorNikeAirZoomPegasus = 2400;
+    var valorJordan3FireRed = 1300;
+    var valorJordan4Thunder = 1700;
+    var valorNikeAirMaxTW = 1700;
+    var valorJordan1Low = 9000;
+    var valorNikeHotStep = 1700;
+    var valorJordan1High = 3000;
+    // ID dos Tênis
+    var Jordan4UniBlue = 1;
+    var NikeKobe06 = 2;
+    var NikeJA1 = 3;
+    var NikeAirZoomAlpha = 4;
+    var NikeAirMaxNeon = 5;
+    var NikeAirZoomPegasus = 6;
+    var Jordan3FireRed = 7;
+    var Jordan4Thunder = 8;
+    var NikeAirMaxTW = 9;
+    var Jordan1Low = 10;
+    var NikeHotStep = 11;
+    var Jordan1High = 12;
+
+    var mensagem = ``;
+    var mensagemRelatorio = ``;
+    var valorTotal = 0;
+
+    listaModelos = [];
+
+    function montar (){
+        if (!jordan_jordan4uniblue.checked &&
+            !nike_kobe6.checked &&
+            !nike_ja1.checked &&
+            !nike_airzoomalpha.checked &&
+            !nike_arimaxneon.checked &&
+            !nike_airzoompegasus.checked &&
+            !jordan_jordan3firered.checked &&
+            !jordan_jordan4thunder.checked &&
+            !nike_airmaxtw.checked && 
+            !nike_airmaxtw.checked && 
+            !jordan_airjordan1low.checked &&
+            !nike_hotstep.checked &&
+            !jordan_jordan1high.checked) {
+                div_mensagem.innerHTML = `Selecione pelo menos <b style="color: #D3AF37">um</b> modelo para sua coleção!`
+            }
+             else {
+        if (jordan_jordan4uniblue.checked){
+            listaModelos.push(Jordan4UniBlue)
+            mensagem += `<b style="color: #D3AF37">Jordan 4 University Blue</b> adicionado a coleção<br>`
+            valorTotal += valorJordan4UniBlue;
+        };
+        if (nike_kobe6.checked){
+            listaModelos.push(NikeKobe06)
+            mensagem += `<b style="color: #D3AF37">Kobe 06</b> adicionado a coleção<br>`
+            valorTotal += valorNikeKobe06;
+        };
+        if (nike_ja1.checked){
+            listaModelos.push(NikeJA1)
+            mensagem += `<b style="color: #D3AF37">Nike JA1</b> adicionado a coleção<br>`
+            valorTotal += valorNikeJA1;
+        };
+        if (nike_airzoomalpha.checked){
+            listaModelos.push(NikeAirZoomAlpha)
+            mensagem += `<b style="color: #D3AF37">Nike Air Zoom Alphafly</b> adicionado a coleção<br>`
+            valorTotal += valorNikeAirZoomAlpha;
+        };
+        if (nike_arimaxneon.checked){
+            listaModelos.push(NikeAirMaxNeon)
+            mensagem += `<b style="color: #D3AF37">Nike Air Max Neon Yellow</b> adicionado a coleção<br>`
+            valorTotal += valorNikeAirMaxNeon;
+        };
+        if (nike_airzoompegasus.checked){
+            listaModelos.push(NikeAirZoomPegasus)
+            mensagem += `<b style="color: #D3AF37">Nike Air Zoom Pegasus</b> adicionado a coleção<br>`
+            valorTotal += valorNikeAirZoomPegasus;
+        };
+        if (jordan_jordan3firered.checked){
+            listaModelos.push(Jordan3FireRed)
+            mensagem += `<b style="color: #D3AF37">Jordan 3 Fire Red</b> adicionado a coleção<br>`
+            valorTotal += valorJordan3FireRed;
+        };
+        if (jordan_jordan4thunder.checked){
+            listaModelos.push(Jordan4Thunder)
+            mensagem += `<b style="color: #D3AF37">Jordan 4 Thunder</b> adicionado a coleção<br>`
+            valorTotal += valorJordan4Thunder;
+        };
+        if (nike_airmaxtw.checked){
+            listaModelos.push(NikeAirMaxTW)
+            mensagem += `<b style="color: #D3AF37">Air Max TW</b> adicionado a coleção<br>`
+            valorTotal += valorNikeAirMaxTW;
+        };
+        if (jordan_airjordan1low.checked){
+            listaModelos.push(Jordan1Low)
+            mensagem += `<b style="color: #D3AF37">Jordan 1 Low</b> adicionado a coleção<br>`
+            valorTotal += valorJordan1Low;
+        };
+        if (nike_hotstep.checked){
+            listaModelos.push(NikeHotStep)
+            mensagem += `<b style="color: #D3AF37">Nike Hot Step</b> adicionado a coleção<br>`
+            valorTotal += valorNikeHotStep;
+        };
+        if (jordan_jordan1high.checked){
+            listaModelos.push(Jordan1High)
+            mensagem += `<b style="color: #D3AF37">Jordan 1 High</b> adicionado a coleção<br>`
+            valorTotal += valorJordan1High;
+        };
+
+        
+        div_mensagem.innerHTML = mensagem;
+        document.getElementById('botaoMontar').disabled = true;
+    }
+}
+
+function gerar(){
+
+    if (listaModelos.length == 0) {
+        div_mensagemRelatorio.innerHTML = `Primeiro Monte sua Coleção`
+    } 
+
+    else {
+    
+    if (listaModelos.includes(1)){
+        mensagemRelatorio += `Percentual do Jordan 4 University Blue: <b style="color: #D3AF37">${((valorJordan4UniBlue/valorTotal) * 100).toFixed(1)}%</b><br>`
+    }
+
+    if (listaModelos.includes(2)){
+        mensagemRelatorio += `Percentual do Nike Kobe 06 Grinch: <b style="color: #D3AF37">${((valorNikeKobe06/valorTotal) * 100).toFixed(1)}%</b><br>`
+    }
+
+    if (listaModelos.includes(3)){
+        mensagemRelatorio += `Percentual do Nike Ja 1 Red Stardust: <b style="color: #D3AF37">${((valorNikeJA1/valorTotal) * 100).toFixed(1)}%</b><br>`
+    }
+
+    if (listaModelos.includes(4)){
+        mensagemRelatorio += `Percentual do Nike Air Zoom Alphafly 6: <b style="color: #D3AF37">${((valorNikeAirZoomAlpha/valorTotal) * 100).toFixed(1)}%</b><br>`
+    }
+
+    if (listaModelos.includes(5)){
+        mensagemRelatorio += `Percentual do Nike Air Max 95 Neon Yellow: <b style="color: #D3AF37">${((valorNikeAirMaxNeon/valorTotal) * 100).toFixed(1)}%</b><br>`
+    }
+
+    if (listaModelos.includes(6)){
+        mensagemRelatorio += `Percentual do Nike Air Zoom Pegasus: <b style="color: #D3AF37">${((valorNikeAirZoomPegasus/valorTotal) * 100).toFixed(1)}%</b><br>`
+    }
+
+    if (listaModelos.includes(7)){
+        mensagemRelatorio += `Percentual do Jordan 3 Fire Red: <b style="color: #D3AF37">${((valorJordan3FireRed/valorTotal) * 100).toFixed(1)}%</b><br>`
+    }
+
+    if (listaModelos.includes(8)){
+        mensagemRelatorio += `Percentual do Jordan 4 Thunder: <b style="color: #D3AF37">${((valorJordan4Thunder/valorTotal) * 100).toFixed(1)}%</b><br>`
+    }
+
+    if (listaModelos.includes(9)){
+        mensagemRelatorio += `Percentual do Air Max TW: <b style="color: #D3AF37">${((valorNikeAirMaxTW/valorTotal) * 100).toFixed(1)}%</b><br>`
+    }
+
+    if (listaModelos.includes(10)){
+        mensagemRelatorio += `Percentual do Jordan 1 Low: <b style="color: #D3AF37">${((valorJordan1Low/valorTotal) * 100).toFixed(1)}%</b><br>`
+    }
+
+    if (listaModelos.includes(11)){
+        mensagemRelatorio += `Percentual do Nike Hot Step 2: <b style="color: #D3AF37">${((valorNikeHotStep/valorTotal) * 100).toFixed(1)}%</b><br>`
+    }
+
+    if (listaModelos.includes(12)){
+        mensagemRelatorio += `Percentual do Jordan 1 High: <b style="color: #D3AF37">${((valorJordan1High/valorTotal) * 100).toFixed(1)}%</b><br>`
+    }
+    
+    div_mensagemRelatorio.innerHTML = `Valor Total da Coleção: <b style="color: green">${valorTotal.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</b><br>
+    ${mensagemRelatorio}`
+
+    document.getElementById('botaoGerar').disabled = true;
+    }
+    
+}
+
+console.log(listaModelos)
+
+</script>

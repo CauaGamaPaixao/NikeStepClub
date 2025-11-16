@@ -45,7 +45,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 750px;
+    height: 100%;
 }
 
 .conteudoCadastro .container {
@@ -53,8 +53,8 @@ body {
     flex-direction: row;
     background-color: #FAF9F6;
     border-radius: 15px;
-    width: 660px;
-    height: 650px;
+    width: 750px;
+    height: 100%;
     margin-right: 110px;
     justify-content: flex-end;
     
@@ -62,8 +62,8 @@ body {
 
 .imagemLateral img{
     display: flex;
-    height: 650px;
-    width: 175px;
+    height: 100%;
+    width: 230px;
 }
 
 .container .campos {
@@ -90,9 +90,10 @@ body {
 .botao {
     display: flex;
     margin-top: 20px;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    width: 440px;
+    width: 100%;
+    margin-left: 20px;
 }
 
 .botao button {

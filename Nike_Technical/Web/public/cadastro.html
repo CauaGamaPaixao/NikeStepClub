@@ -50,7 +50,7 @@
                 <span id="span_email"></span>
                 <br>
                 <span>Senha: </span>
-                <input oninput="verificarSenha()" id="ipt_senha" type="password">
+                <input onblur="verificarSenha()" id="ipt_senha" type="password">
                 <span id="span_senha"></span>
                 <br>
                 <span>Data de Nascimento: </span>
@@ -60,6 +60,7 @@
                 <div class="botao">
                   <button onclick="registrar()">JustRegisterIt</button>
                 </div>
+                  <span id="span_registro"></span>
             </div>
             <div class="imagemLateral">
                 <img src="assets/imagemCadastro.png" alt="">
@@ -70,8 +71,6 @@
 </html>
 
 <script>
-    var numerosPermitidos = `0123456789`
-    var letrasSenha = `abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ`
 
     var nomeInvalido = true;
     var sobrenomeInvalido = true;
@@ -82,7 +81,7 @@
     //Validar Nome
     function verificarNome (){
       var nome = ipt_nome.value;
-      if (nome.length > 45){
+      if (nome.length > 45 || nome.length <= 2){
         span_nome.innerHTML = `Insira um nome válido (Até 45 caracteres)`
         nomeInvalido = true;
       }
@@ -95,7 +94,7 @@
     //Validar Sobrenome
     function verificarSobrenome(){
       var sobrenome = ipt_sobrenome.value;
-      if (sobrenome.length > 45){
+      if (sobrenome.length > 45 || sobrenome.length <= 2){
         span_sobrenome.innerHTML = `Insira um sobrenome válido (Até 45 caracteres)`
         sobrenomeInvalido = true;
       }
@@ -119,13 +118,23 @@
       }
     }
 
-    //Exibir Requisitos
-    function exibirRequisitos(){
-
-    }
+    //Verificar Senha
 
     function verificarSenha(){
       var senha = ipt_senha.value;
+      var senhaFormatada = senha.toLowerCase();
+
+      if (senhaFormatada == senha || senha.length < 8 || senha.length > 16){
+        senhaInvalido = true;
+        span_senha.innerHTML = `Sua senha deve conter:<br>
+        De 8 a 16 caracteres<br>
+        1 letra maiúscula`
+      }
+      else {
+        senhaInvalido = false;
+        span_senha.innerHTML = ``;
+      }
+      
 
     }
 
@@ -136,10 +145,69 @@
       if (dtNascimento == ``){
         dtNascimentoInvalido = true;
         span_dtNascimento.innerHTML = `Preencha este campo`
-      } else {
+      } 
+      else {
         dtNascimentoInvalido = false;
         span_dtNascimento.innerHTML = ``;
       }
+    }
+
+    function registrar (){
+      var nome = ipt_nome.value;
+      var sobrenome = ipt_sobrenome.value;
+      var email = ipt_email.value;
+      var senha = ipt_senha.value;
+      var dtNascimento = ipt_dtNascimento.value;
+
+      if (nomeInvalido ||
+     sobrenomeInvalido ||
+     emailInvalido ||
+     senhaInvalido ||
+     dtNascimentoInvalido){
+      span_registro.innerHTML = `Verifique se os <b style="color: red">campos</b> estão preenchidos <b style="color: red">corretamente</b>`
+     }
+     else {
+      // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nome,
+        sobrenomeServer: sobrenome,
+        emailServer: email,
+        senhaServer: senha,
+        dtNascimentoServer: dtNascimento
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          span_registro.style.display = "block";
+
+          span_registro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        
+      });
+
+    return false;
+     }
     }
    
 

@@ -6,9 +6,10 @@ idUsuario INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR (45),
 sobrenome VARCHAR (45),
 email VARCHAR (45),
-senha VARCHAR (45),
+senha VARCHAR (16),
 dtNascimento DATE
 );
+
 
 CREATE TABLE Tenis (
 idTenis INT PRIMARY KEY AUTO_INCREMENT,
@@ -20,6 +21,7 @@ HOF INT,
 CONSTRAINT chkHOF
 	CHECK (HOF IN (0, 1))
 );
+
 
 CREATE TABLE Inventario (
 idInventario INT,
