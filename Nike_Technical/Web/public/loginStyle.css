@@ -30,11 +30,16 @@ body {
     text-decoration: none;
     justify-content: space-around;
     font-size: large;
+    transition: all 0.3s ease-in-out;
 }
 
 .agora a{
     color: white;
     font-weight: bold;
+}
+
+.navbar a:hover{
+    color: crimson;
 }
 
 /* HEADER FIM */
