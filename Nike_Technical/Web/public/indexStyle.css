@@ -14,6 +14,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: none;
 }
 
 .header {
@@ -28,6 +29,7 @@ html {
     width: 1572px;
     height: 50px;
     justify-content: space-around;
+    margin-right: 130px;
 }
 
 .header .container{
@@ -249,8 +251,6 @@ html {
 .botaoroll {
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-right: 120px;
 }
 
 .botaoroll a {

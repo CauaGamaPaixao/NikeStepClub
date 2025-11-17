@@ -12,13 +12,14 @@ body {
 }
 
 .navbar{
-    list-style: none;
     display: flex;
+    list-style: none;
     align-items: center; 
     color: #FFFFFF; 
     width: 1572px;
     height: 50px;
     justify-content: space-around;
+    margin-right: 130px;
 }
 
 .header .container{
