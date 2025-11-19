@@ -227,9 +227,9 @@
 
 var colecao = [idUser,listaModelos];
 
-var instrucao = `INSERT INTO Inventario (fkusuario, fktenis) VALUES `
+var instrucao = ``;
 var listaInstrucao = [];
-var modelos = colecao[1];
+var modelos = colecao[idUser];
 
 
 function gerar(){
@@ -295,13 +295,13 @@ function gerar(){
     div_dashboard.innerHTML = `<a class="botaoDashboard" href="dashboard.html">Dashboard</a>`
     }
     for (var i = 0; i < modelos.length; i++){
-    listaInstrucao.push(`(1, ${modelos[i]})`)
+    listaInstrucao.push(`(${idUser}, ${idUser}, ${modelos[i]})`)
     }
 
     instrucao += `${listaInstrucao};`
     console.log(instrucao)
 
-    fetch("/usuarios/inventario", {
+    fetch("/usuarios/inserirModelos", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -309,7 +309,8 @@ function gerar(){
       body: JSON.stringify({
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/usuario.js
-        instrucaoServer: instrucao
+        instrucaoServer: instrucao,
+        idUserServer: idUser
       }),
     })
       .then(function (resposta) {

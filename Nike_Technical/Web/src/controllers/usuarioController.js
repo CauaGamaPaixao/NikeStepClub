@@ -87,11 +87,12 @@ function cadastrar(req, res) {
     }
 }
 
-function inventario(req, res) {
+function inserirModelos(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo colecao.html
     var inventarioUser = req.body.instrucaoServer;
+    var idUser = req.body.idUserServer;
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.inventario(inventarioUser)
+        usuarioModel.inserirModelos(inventarioUser, idUser)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -111,5 +112,5 @@ function inventario(req, res) {
 module.exports = {
     autenticar,
     cadastrar,
-    inventario
+    inserirModelos
 }
