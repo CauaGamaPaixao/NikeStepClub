@@ -10,10 +10,9 @@ body {
 
 .header {
     display: flex;
-    background-color: black;
     flex-direction: column;
     width: 450px;
-    height: 970px;
+    height: 1570px;
 }
 
 .secao1 {
@@ -44,7 +43,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 450px;
-    height: 520px;
+    height: 1460px;
 }
 
 .conteudoSecao2 {
@@ -52,7 +51,7 @@ body {
     flex-direction: column;
     background-color: #D3AF37;
     width: 450px;
-    height: 520px;
+    height: 1120px;
     justify-content: space-between
 }
 
@@ -96,13 +95,8 @@ body {
     display: flex;
     width: 450px;
     height: 90px;
-    transition: all 0.3s ease-in-out;
 }
 
-.sair:hover {
-    cursor: pointer;
-    background-color: #FFFFFF;
-}
 
 .imagemSair {
     display: flex;
@@ -125,8 +119,16 @@ body {
     justify-content: flex-start;
 }
 
-.textoSair span {
+.textoSair a{
+    text-decoration: none;
+    color: black;
     font-size: 23px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.textoSair a:hover{
+    cursor: pointer;
+    transform: scale(1.15);
 }
 
 /* HEADER FIM */
@@ -136,7 +138,6 @@ body {
 .dash{
     display: flex;
     flex-direction: column;
-    background-color: green;
     width: 1420px;
     height: 970px;
 }
@@ -192,7 +193,6 @@ body {
     display: flex;
     width: 1410px;
     height: 150px;
-    background-color: aqua;
     justify-content: center;
     align-items: center;
 }
@@ -235,4 +235,82 @@ body {
     font-size: 20px;
 }
 
+.graficos {
+    display: flex;
+    flex-direction: row;
+    width: 1410px;
+    height: 600px;
+}
 
+.cardGrafico {
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    height: 1200px;
+
+    justify-content: space-around;
+    align-items: center;
+}
+
+.cardColecao {
+    display: flex;
+    width: 500px;
+    height: 1200px;
+
+    justify-content: center;
+    align-items: center;
+
+}
+
+.card {
+    display: flex;
+    width: 900px;
+    height: 550px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.colecaoCard {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 1150px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.textocolecaoCard {
+    display: flex;
+    width: 400px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.textocolecaoCard span {
+    font-size: 20px;
+}
+
+.modeloscolecaoCard {
+    display: grid;
+    grid-template-columns: 140px 140px;
+    gap: 60px;
+    row-gap: 10px;
+    justify-content: center;
+    align-content: start;
+    width: 400px;
+    height: 100%;
+
+}
+
+.cardModelo {
+    display: flex;
+    margin-top: 25px;
+    width: 140px;
+    height: 140px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    border: solid 3px #D3AF37;
+}
