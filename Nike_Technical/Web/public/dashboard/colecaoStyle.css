@@ -164,5 +164,23 @@ input[type=checkbox]{
 
 }
 
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botaoDashboard{
+    display: flex;
+    text-decoration: none;
+    width: 200px;
+    height: 35px;
+    border-radius: 15px;
+    background-color: #D3AF37;
+    color: black;
+    justify-content: center;
+    align-items: center;
+}
+
 
 /* CONTEUDO FIM */

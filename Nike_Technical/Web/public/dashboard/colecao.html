@@ -96,7 +96,9 @@
             <br>
             <div class="mensagemColecao" id="div_mensagem"></div>   
             <br>
-            <div class="mensagemRelatorio" id="div_mensagemRelatorio"></div>            
+            <div class="mensagemRelatorio" id="div_mensagemRelatorio"></div>   
+            <br>
+            <div id="div_dashboard"></div>    
         </div>
     </div>
 </body>
@@ -136,6 +138,8 @@
     var valorTotal = 0;
 
     listaModelos = [];
+
+    var idUser = sessionStorage.ID_USUARIO; 
 
     function montar (){
         if (!jordan_jordan4uniblue.checked &&
@@ -221,6 +225,13 @@
     }
 }
 
+var colecao = [idUser,listaModelos];
+
+var instrucao = `INSERT INTO Inventario (fkusuario, fktenis) VALUES `
+var listaInstrucao = [];
+var modelos = colecao[1];
+
+
 function gerar(){
 
     if (listaModelos.length == 0) {
@@ -281,10 +292,20 @@ function gerar(){
     ${mensagemRelatorio}`
 
     document.getElementById('botaoGerar').disabled = true;
+    div_dashboard.innerHTML = `<a class="botaoDashboard" href="dashboard.html">Dashboard</a>`
     }
+    for (var i = 0; i < modelos.length; i++){
+    listaInstrucao.push(`(1, ${modelos[i]})`)
+    }
+
+    instrucao += `${listaInstrucao};`
+    console.log(instrucao)
+
     
+
 }
 
-console.log(listaModelos)
+
+
 
 </script>
