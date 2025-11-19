@@ -301,8 +301,26 @@ function gerar(){
     instrucao += `${listaInstrucao};`
     console.log(instrucao)
 
-    
+    fetch("/usuarios/inventario", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        instrucaoServer: instrucao
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        
+      });
 
+    return false;
 }
 
 

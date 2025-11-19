@@ -87,7 +87,29 @@ function cadastrar(req, res) {
     }
 }
 
+function inventario(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo colecao.html
+    var inventarioUser = req.body.instrucaoServer;
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.inventario(inventarioUser)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao montar o inventário! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    inventario
 }
