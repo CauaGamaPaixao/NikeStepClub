@@ -229,11 +229,12 @@ var colecao = [idUser,listaModelos];
 
 var instrucao = ``;
 var listaInstrucao = [];
-var modelos = colecao[idUser];
+var modelos = colecao[1];
 
 
 function gerar(){
-
+    console.log(colecao)
+    console.log (modelos);
     if (listaModelos.length == 0) {
         div_mensagemRelatorio.innerHTML = `Primeiro Monte sua Coleção`
     } 
