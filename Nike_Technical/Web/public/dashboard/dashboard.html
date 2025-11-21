@@ -48,7 +48,7 @@
                     <span>Modelo <br> Mais Caro</span>
                 </div>
                 <div class="KPIimagem">
-                    <img src="assets/AirJordan1ReverseMocha.png" alt="">
+                    <span style="color: darkred;">R$ 9.000,00</span>
                 </div>
             </div>
             <div class="KPIcard">
@@ -56,7 +56,7 @@
                     <span>Modelo <br> Mais Barato</span>
                 </div>
                 <div class="KPIimagem">
-                    <img src="assets/NikeHotStep2.png" alt="">
+                    <span style="color: darkgreen">R$ 750,00</span>
                 </div>
             </div>
             <div class="KPIcard">
@@ -82,10 +82,16 @@
         <div class="graficos">
             <div class="cardGrafico">
                 <div class="card">
-
+                    <div class="grafico">
+                    <h3>Comparativo de Preços</h3>
+                    <canvas id="priceChart"></canvas>
+                    </div>
                 </div>
                 <div class="card">
-
+                    <div class="grafico">
+                        <h3>Foco da coleção</h3>
+                     <canvas id="focusChart"></canvas>
+                     </div>
                 </div>
             </div>
             <div class="cardColecao">
@@ -118,5 +124,96 @@
     var nome = sessionStorage.NOME_USUARIO;
     span_header.innerHTML = `Seja bem vindo ${nome}`
 
+
+    document.addEventListener('DOMContentLoaded', () => {
+            // --- 1. Gráfico de Barras (Preços) ---
+            const priceCtx = document.getElementById('priceChart').getContext('2d');
+            
+            const mockPriceData = {
+                labels: ['AF1', 'Dunk', 'AM90', 'Jordan'],
+                datasets: [{
+                    label: 'Valor (R$)',
+                    data: [1500, 1800, 9500, 6000], 
+                    backgroundColor: 'rgba(245, 158, 11, 0.8)', 
+                    borderColor: 'rgba(245, 158, 11, 1)',
+                    borderWidth: 1,
+                    borderRadius: 4, 
+                }]
+            };
+
+            new Chart(priceCtx, {
+                type: 'bar',
+                data: mockPriceData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false, 
+                    plugins: {
+                        legend: { display: false }, 
+                        title: {
+                            display: true,
+                            font: { size: 14 }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { drawBorder: false },
+                            ticks: {
+                                callback: function(value) {
+                                    // Formata o valor como moeda
+                                    return 'R$ ' + value.toLocaleString('pt-BR');
+                                }
+                            }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+
+            // --- 2. Gráfico de Pizza/Donut (Foco) ---
+            const focusCtx = document.getElementById('focusChart').getContext('2d');
+            
+            // Dados Mockados: 56% Casual, 44% Esportiva
+            const casualCount = 7;
+            const esportivaCount = 5;
+            const total = casualCount + esportivaCount;
+            const casualPct = ((casualCount / total) * 100).toFixed(0);
+            const esportivaPct = ((esportivaCount / total) * 100).toFixed(0);
+
+
+            const mockFocusData = {
+                labels: [`Casual (${casualPct}%)`, `Esportiva (${esportivaPct}%)`],
+                datasets: [{
+                    data: [casualCount, esportivaCount],
+                    backgroundColor: ['#f59e0b', '#10b981'], // Ouro para Casual, Verde para Esportiva
+                    hoverOffset: 4
+                }]
+            };
+
+            new Chart(focusCtx, {
+                type: 'doughnut',
+                data: mockFocusData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: { size: 14 }
+                            }
+                        },
+                        title: {
+                            display: true,
+                            font: { size: 16 }
+                        }
+                    }
+                }
+            });
+        });
+
+    
     
 </script>
