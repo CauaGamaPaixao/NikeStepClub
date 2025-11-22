@@ -153,12 +153,17 @@ body {
 .KPIcard {
     display: flex;
     width: 380px;
-    height: 160px;
+    height: 100px;
     background-color: #FFFFFF;
     border-radius: 10px;
     border: solid 3px #D3AF37;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
     
+}
+
+.KPIcard:hover{
+    transform: scale(1.1);
 }
 
 .KPItexto {
@@ -166,7 +171,7 @@ body {
     align-items: center;
     justify-content: center;
     width: 170px;
-    height: 160px;
+    height: 100px;
 }
 
 .KPItexto span {
@@ -237,8 +242,9 @@ body {
 .graficos {
     display: flex;
     flex-direction: row;
-    width: 1410px;
+    width: 1500px;
     height: 600px;
+    justify-content: center;
 }
 
 .cardGrafico {
@@ -246,9 +252,9 @@ body {
     flex-direction: column;
     width: 1000px;
     height: 1200px;
-
     justify-content: space-around;
     align-items: center;
+    margin-right: 90px;
 }
 
 .cardColecao {
