@@ -14,24 +14,24 @@
     <div class="colecao">
         <div class="caixa">
             <div class="caixaTitulo">
-                <span>MONTE SUA COLEÇÃO DOS <b style="color: #D3AF37;">SONHOS</b></span>
+                <span>MONTE O SEU <b style="color: #D3AF37;">TOP 5</b></span>
             </div>
             <div class="caixaGrid">
                 <div class="cardGrid">
                     <div class="cardTitulo">Jordan 4 “University Blue”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/Jordan4UniBlue.png" alt="" width="220px"></div>
-                        <input id="jordan_jordan4uniblue" type="checkbox">
+                        <input id="jordan_jordan4uniblue" type="checkbox" class="limite-checkbox">
                     </div>
                     <div class="cardTitulo">Nike Kobe 6 Protro “Grinch Green Apple”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/KobeGrinch.png" alt="" width="220px"></div>
-                        <input id="nike_kobe6" type="checkbox">
+                        <input id="nike_kobe6" type="checkbox" class="limite-checkbox">
                     </div>
                     <div class="cardTitulo">Nike Ja 1 “Red Stardust”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/NikeJA1.png" alt="" width="220px"></div>
-                        <input id="nike_ja1" type="checkbox">
+                        <input id="nike_ja1" type="checkbox" class="limite-checkbox">
                     </div>
                 </div>
 
@@ -39,17 +39,17 @@
                     <div class="cardTitulo">Nike Air Zoom Alphafly 6 “Coconut Milk”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/NikeAlphafly.png" alt="" width="220px"></div>
-                        <input id="nike_airzoomalpha" type="checkbox">
+                        <input id="nike_airzoomalpha" type="checkbox" class="limite-checkbox">
                     </div>
                     <div class="cardTitulo">Air Max 95 “Neon Yellow”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/AirMax95.png" alt="" width="220px"></div>
-                        <input id="nike_arimaxneon" type="checkbox">
+                        <input id="nike_arimaxneon" type="checkbox" class="limite-checkbox">
                     </div>
                     <div class="cardTitulo">Nike Air Zoom Pegasus “Orange Crimson”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/AirZoom.png" alt="" width="220px"></div>
-                        <input id="nike_airzoompegasus" type="checkbox">
+                        <input id="nike_airzoompegasus" type="checkbox" class="limite-checkbox">
                     </div>
                 </div>
 
@@ -57,17 +57,17 @@
                     <div class="cardTitulo">Air Jordan 3 “Fire Red”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/AirJordan3.png" alt="" width="190px"></div>
-                        <input id="jordan_jordan3firered" type="checkbox">
+                        <input id="jordan_jordan3firered" type="checkbox" class="limite-checkbox">
                     </div>
                     <div class="cardTitulo">Air Jordan 4 “Thunder”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/AirJordan4Thunder.png" alt="" width="190px"></div>
-                        <input id="jordan_jordan4thunder" type="checkbox">
+                        <input id="jordan_jordan4thunder" type="checkbox" class="limite-checkbox">
                     </div>
                     <div class="cardTitulo">Nike Air Max TW “Racer Blue”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/AirMaxTW.png" alt="" width="220px"></div>
-                        <input id="nike_airmaxtw" type="checkbox">
+                        <input id="nike_airmaxtw" type="checkbox" class="limite-checkbox">
                     </div>
                 </div>
 
@@ -75,30 +75,27 @@
                     <div class="cardTitulo">Air Jordan 1 Low “Reverse Mocha”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/AirJordan1ReverseMocha.png" alt="" width="220px"></div>
-                        <input id="jordan_airjordan1low" type="checkbox">
+                        <input id="jordan_airjordan1low" type="checkbox" class="limite-checkbox">
                     </div>
                     <div class="cardTitulo">NOCTA x Nike Hot Step 2 “Total White “</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/NikeHotStep2.png" alt="" width="220px"></div>
-                        <input id="nike_hotstep" type="checkbox">
+                        <input id="nike_hotstep" type="checkbox" class="limite-checkbox">
                     </div>
                     <div class="cardTitulo">Air Jordan 1 High “Bred Toe”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/AirJordan1BredToe.png" alt="" width="220px"></div>
-                        <input id="jordan_jordan1high" type="checkbox">
+                        <input id="jordan_jordan1high" type="checkbox" class="limite-checkbox">
                     </div>
                 </div>
             </div>
             <div class="botoes">
             <button id="botaoMontar" class="button" onclick="montar()">Montar Coleção</button>
-            <button id="botaoGerar" class="button" onclick="gerar()">Gerar Relatório</button>
+            <a href="dashboard.html"><button id="botaoDashboard" class="button" onclick="dashboard()">Dashboard</button></a>
             </div>
             <br>
             <div class="mensagemColecao" id="div_mensagem"></div>   
-            <br>
-            <div class="mensagemRelatorio" id="div_mensagemRelatorio"></div>   
-            <br>
-            <div id="div_dashboard"></div>    
+            <br>   
         </div>
     </div>
 </body>
@@ -106,6 +103,23 @@
 
 
 <script>
+    document.getElementById('botaoDashboard').disabled = true;
+    document.addEventListener('DOMContentLoaded', (event) => {
+    var limite_selecoes = 5;
+    var checkboxes = document.querySelectorAll('input.limite-checkbox'); // Seleciona todos os checkboxes com a classe
+
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            var checkedCount = document.querySelectorAll('input.limite-checkbox:checked').length;
+
+            if (checkedCount > limite_selecoes) {
+                alert(`Você pode selecionar no máximo ${limite_selecoes} opções.`);
+                this.checked = false; // Desmarca o checkbox que acabou de ser clicado
+            }
+        });
+    });
+});
+
     // Valores dos Tênis
     var valorJordan4UniBlue = 2000;
     var valorNikeKobe06 = 4000;
@@ -222,6 +236,7 @@
         
         div_mensagem.innerHTML = mensagem;
         document.getElementById('botaoMontar').disabled = true;
+        document.getElementById('botaoDashboard').disabled = false;
     }
 }
 
@@ -232,69 +247,9 @@ var listaInstrucao = [];
 var modelos = colecao[1];
 
 
-function gerar(){
+function dashboard(){
     console.log(colecao)
     console.log (modelos);
-    if (listaModelos.length == 0) {
-        div_mensagemRelatorio.innerHTML = `Primeiro Monte sua Coleção`
-    } 
-
-    else {
-    
-    if (listaModelos.includes(1)){
-        mensagemRelatorio += `Percentual do Jordan 4 University Blue: <b style="color: #D3AF37">${((valorJordan4UniBlue/valorTotal) * 100).toFixed(1)}%</b><br>`
-    }
-
-    if (listaModelos.includes(2)){
-        mensagemRelatorio += `Percentual do Nike Kobe 06 Grinch: <b style="color: #D3AF37">${((valorNikeKobe06/valorTotal) * 100).toFixed(1)}%</b><br>`
-    }
-
-    if (listaModelos.includes(3)){
-        mensagemRelatorio += `Percentual do Nike Ja 1 Red Stardust: <b style="color: #D3AF37">${((valorNikeJA1/valorTotal) * 100).toFixed(1)}%</b><br>`
-    }
-
-    if (listaModelos.includes(4)){
-        mensagemRelatorio += `Percentual do Nike Air Zoom Alphafly 6: <b style="color: #D3AF37">${((valorNikeAirZoomAlpha/valorTotal) * 100).toFixed(1)}%</b><br>`
-    }
-
-    if (listaModelos.includes(5)){
-        mensagemRelatorio += `Percentual do Nike Air Max 95 Neon Yellow: <b style="color: #D3AF37">${((valorNikeAirMaxNeon/valorTotal) * 100).toFixed(1)}%</b><br>`
-    }
-
-    if (listaModelos.includes(6)){
-        mensagemRelatorio += `Percentual do Nike Air Zoom Pegasus: <b style="color: #D3AF37">${((valorNikeAirZoomPegasus/valorTotal) * 100).toFixed(1)}%</b><br>`
-    }
-
-    if (listaModelos.includes(7)){
-        mensagemRelatorio += `Percentual do Jordan 3 Fire Red: <b style="color: #D3AF37">${((valorJordan3FireRed/valorTotal) * 100).toFixed(1)}%</b><br>`
-    }
-
-    if (listaModelos.includes(8)){
-        mensagemRelatorio += `Percentual do Jordan 4 Thunder: <b style="color: #D3AF37">${((valorJordan4Thunder/valorTotal) * 100).toFixed(1)}%</b><br>`
-    }
-
-    if (listaModelos.includes(9)){
-        mensagemRelatorio += `Percentual do Air Max TW: <b style="color: #D3AF37">${((valorNikeAirMaxTW/valorTotal) * 100).toFixed(1)}%</b><br>`
-    }
-
-    if (listaModelos.includes(10)){
-        mensagemRelatorio += `Percentual do Jordan 1 Low: <b style="color: #D3AF37">${((valorJordan1Low/valorTotal) * 100).toFixed(1)}%</b><br>`
-    }
-
-    if (listaModelos.includes(11)){
-        mensagemRelatorio += `Percentual do Nike Hot Step 2: <b style="color: #D3AF37">${((valorNikeHotStep/valorTotal) * 100).toFixed(1)}%</b><br>`
-    }
-
-    if (listaModelos.includes(12)){
-        mensagemRelatorio += `Percentual do Jordan 1 High: <b style="color: #D3AF37">${((valorJordan1High/valorTotal) * 100).toFixed(1)}%</b><br>`
-    }
-    
-    div_mensagemRelatorio.innerHTML = `Valor Total da Coleção: <b style="color: green">${valorTotal.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</b><br>
-    ${mensagemRelatorio}`
-
-    document.getElementById('botaoGerar').disabled = true;
-    div_dashboard.innerHTML = `<a class="botaoDashboard" href="dashboard.html">Dashboard</a>`
-    }
     for (var i = 0; i < modelos.length; i++){
     listaInstrucao.push(`(${idUser}, ${idUser}, ${modelos[i]})`)
     }

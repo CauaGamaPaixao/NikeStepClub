@@ -4,7 +4,7 @@ function buscarUltimasMedidas(req, res) {
 
     const limite_linhas = 12;
 
-    var idAquario = req.params.idUsuario;
+    var idUsuario = req.params.idUsuario;
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
 
@@ -39,10 +39,15 @@ function buscarMedidasEmTempoReal(req, res) {
         console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
         res.status(500).json(erro.sqlMessage);
     });
+} 
+
+function listar(req, res) {
+    var idUsuario = req.params.idUsuario
+    medidaModel.listar(idUsuario).then((resultado) => res.status(200).json(resultado)).catch((erro) => res.status(500).json(erro.sqlMessage));
 }
 
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
-
+    buscarMedidasEmTempoReal,
+    listar
 }

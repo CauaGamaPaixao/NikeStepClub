@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,11 @@
     <link rel="stylesheet" href="dashboardStyle.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
     <div class="header">
         <div class="secao1">
@@ -26,7 +29,7 @@
                         <img src="assets/ColecaoGrid.png" alt="">
                     </div>
                     <div class="textoColecao">
-                    <span>Sua Coleção</span>
+                        <span>Sua Coleção</span>
                     </div>
                 </div>
                 <div class="sair">
@@ -35,7 +38,7 @@
                         <img src="assets/Sair.png" alt="">
                     </div>
                     <div class="textoSair">
-                        <a href="../index.html">Sair</a>  
+                        <a href="../index.html">Sair</a>
                     </div>
                 </div>
             </div>
@@ -48,7 +51,7 @@
                     <span>Modelo <br> Mais Caro</span>
                 </div>
                 <div class="KPIimagem">
-                    <span style="color: darkred;">R$ 9.000,00</span>
+                    <span id="valor_caro" style="color: darkred;"></span>
                 </div>
             </div>
             <div class="KPIcard">
@@ -56,7 +59,7 @@
                     <span>Modelo <br> Mais Barato</span>
                 </div>
                 <div class="KPIimagem">
-                    <span style="color: darkgreen">R$ 750,00</span>
+                    <span id="valor_barato" style="color: darkgreen"></span>
                 </div>
             </div>
             <div class="KPIcard">
@@ -64,7 +67,7 @@
                     <span>Foco da <br> Coleção</span>
                 </div>
                 <div class="KPIimagem">
-                    <span>Esportiva</span>
+                    <span id="foco_colecao"></span>
                 </div>
             </div>
         </div>
@@ -74,7 +77,7 @@
                     <span>Sua coleção atual está avaliada no valor de </span>
                 </div>
                 <div class="valorDinheiro">
-                    <span>R$ 25.000,00</span>
+                    <span id="kpi_total"></span>
                 </div>
             </div>
         </div>
@@ -82,207 +85,168 @@
             <div class="cardGrafico">
                 <div class="card">
                     <div class="grafico">
-                    <h3>Comparativo de Preços</h3>
-                    <canvas id="priceChart"></canvas>
+                        <h3>Comparativo de Preços</h3>
+                        <canvas id="priceChart"></canvas>
                     </div>
                 </div>
                 <div class="card">
                     <div class="grafico">
                         <h3>Foco da coleção</h3>
-                     <canvas id="focusChart"></canvas>
-                     </div>
+                        <canvas id="focusChart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>
 <script>
-
+    var imagemColecao = document.getElementById('imagem_colecao');
+    var idUsuario = sessionStorage.ID_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
     span_header.innerHTML = `Seja bem vindo ${nome}`
+    var focoColecao = ``;
+    
+    function valorTotal(dados){
+        var total = Number(dados[0].Valor) + Number(dados[1].Valor) + Number(dados[2].Valor) + Number(dados[3].Valor) + Number(dados[4].Valor)
 
-    document.addEventListener('DOMContentLoaded', () => {
-            // --- 1. Gráfico de Barras (Preços) ---
-            const priceCtx = document.getElementById('priceChart').getContext('2d');
-            
-            const mockPriceData = {
-                labels: ['AF1', 'Dunk', 'AM90', 'Jordan'],
-                datasets: [{
-                    label: 'Valor (R$)',
-                    data: [1500, 1800, 9500, 6000], 
-                    backgroundColor: 'rgba(245, 158, 11, 0.8)', 
-                    borderColor: 'rgba(245, 158, 11, 1)',
-                    borderWidth: 1,
-                    borderRadius: 4, 
-                }]
-            };
+        kpi_total.innerHTML = total.toLocaleString('pt-BR', {style: "currency", currency: "BRL"});
 
-            new Chart(priceCtx, {
-                type: 'bar',
-                data: mockPriceData,
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false, 
-                    plugins: {
-                        legend: { display: false }, 
-                        title: {
-                            display: true,
-                            font: { size: 14 }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: { drawBorder: false },
-                            ticks: {
-                                callback: function(value) {
-                                    // Formata o valor como moeda
-                                    return 'R$ ' + value.toLocaleString('pt-BR');
-                                }
-                            }
-                        },
-                        x: {
-                            grid: { display: false }
-                        }
-                    }
+    }
+
+    function valorMaisCaro(dados){
+        var valorCaro = Number(dados[0].Valor)
+        valor_caro.innerHTML = valorCaro.toLocaleString('pt-BR', {style: "currency", currency: "BRL"})
+
+    }
+
+    function valorMaisBarato(dados){
+        var valorBarato = Number(dados[4].Valor)
+        valor_barato.innerHTML = valorBarato.toLocaleString('pt-BR', {style: "currency", currency: "BRL"})
+    }
+
+    function montarPizza(dados){
+            var lista = [dados[0].Tipo, dados[1].Tipo, dados[2].Tipo, dados[3].Tipo, dados[4].Tipo];
+            var esporte = 0;
+            var casual = 0
+            for (var i = 0; i < lista.length; i++){
+                if (lista[i] == 'Casual') {
+                    casual++
+                } else{
+                    esporte++;
                 }
-            });
+            }
 
-            // --- 2. Gráfico de Pizza/Donut (Foco) ---
+            if (casual > esporte){
+                focoColecao = 'Casual'
+            } else {
+                focoColecao = 'Esportiva'
+            }
+
+            foco_colecao.innerHTML = focoColecao;
+                
+            console.log(lista)
+            var totalTipo = casual + esporte;
+            var casualPct = ((casual / totalTipo) * 100).toFixed(0);
+            var esportivaPct = ((esporte / totalTipo) * 100).toFixed(0);
             const focusCtx = document.getElementById('focusChart').getContext('2d');
-            
-            // Dados Mockados: 56% Casual, 44% Esportiva
-            const casualCount = 7;
-            const esportivaCount = 5;
-            const total = casualCount + esportivaCount;
-            const casualPct = ((casualCount / total) * 100).toFixed(0);
-            const esportivaPct = ((esportivaCount / total) * 100).toFixed(0);
-
-
-            const mockFocusData = {
+            new Chart(focusCtx, {
+            type: 'doughnut',
+            data: {
                 labels: [`Casual (${casualPct}%)`, `Esportiva (${esportivaPct}%)`],
                 datasets: [{
-                    data: [casualCount, esportivaCount],
+                    label: 'Valor (R$)',
+                    data: [casual, esporte],
                     backgroundColor: ['#f59e0b', '#10b981'], // Ouro para Casual, Verde para Esportiva
                     hoverOffset: 4
                 }]
-            };
-
-            new Chart(focusCtx, {
-                type: 'doughnut',
-                data: mockFocusData,
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                font: { size: 14 }
-                            }
-                        },
-                        title: {
-                            display: true,
-                            font: { size: 16 }
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: { size: 14 }
                         }
+                    },
+                    title: {
+                        display: true,
+                        font: { size: 16 }
                     }
                 }
-            });
-        });
-
-    // O gráfico é construído com três funções:
-    // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
-    // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
-    // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
-
-    // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
-    // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
-    // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
-
-    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-    //     Para ajustar o "select", ajuste o comando sql em src/models
-    function obterDadosGrafico(idUsuario) {
-
-        fetch(`/medidas/ultimas/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    resposta.reverse();
-
-                    plotarGrafico(resposta, idUsuario);
-
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
             }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
+        });
     }
 
-    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
-    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGrafico(resposta, idUsuario) {
 
-        console.log('iniciando plotagem do gráfico...');
-
-        // Criando estrutura para plotar gráfico - labels
-        let labels = [];
-
-        // Criando estrutura para plotar gráfico - dados
-        let dados = {
-            labels: labels,
-            datasets: [{
-                label: 'Umidade',
-                data: [],
-                fill: false,
-                borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
+    function montarGrafico (dados){
+        const priceCtx = document.getElementById('priceChart').getContext('2d');
+        new Chart(priceCtx, {
+            type: 'bar',
+            data: {
+                labels: [dados[0].Tenis, dados[1].Tenis, dados[2].Tenis, dados[3].Tenis, dados[4].Tenis],
+                datasets: [{
+                    label: 'Valor (R$)',
+                    data: [dados[0].Valor, dados[1].Valor, dados[2].Valor, dados[3].Valor, dados[4].Valor],
+                    backgroundColor: 'rgba(245, 158, 11, 0.8)',
+                    borderColor: 'rgba(245, 158, 11, 1)',
+                    borderWidth: 1,
+                    borderRadius: 4,
+                }]
             },
-            {
-                label: 'Temperatura',
-                data: [],
-                fill: false,
-                borderColor: 'rgb(199, 52, 52)',
-                tension: 0.1
-            }]
-        };
-
-        console.log('----------------------------------------------')
-        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-        console.log(resposta)
-
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
-        for (i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
-            labels.push(registro.momento_grafico);
-            dados.datasets[0].data.push(registro.umidade);
-            dados.datasets[1].data.push(registro.temperatura);
-        }
-
-        console.log('----------------------------------------------')
-        console.log('O gráfico será plotado com os respectivos valores:')
-        console.log('Labels:')
-        console.log(labels)
-        console.log('Dados:')
-        console.log(dados.datasets)
-        console.log('----------------------------------------------')
-
-        // Criando estrutura para plotar gráfico - config
-        const config = {
-            type: 'line',
-            data: dados,
-        };
-
-        // Adicionando gráfico criado em div na tela
-        let myChart = new Chart(
-            document.getElementById(`myChartCanvas${idUsuario}`),
-            config
-        );
-
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        font: { size: 14 }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { drawBorder: false },
+                        ticks: {
+                            callback: function (value) {
+                                // Formata o valor como moeda
+                                return 'R$ ' + value.toLocaleString('pt-BR');
+                            }
+                        }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
     }
-    
+    document.addEventListener('DOMContentLoaded', () => {
+
+            fetch(`/medidas/listar/${idUsuario}`).then(function (res) {
+            if (res.ok) {
+            res.json().then(function (response) {
+                console.log(`Dados recebidos: ${JSON.stringify(response)}`)
+                montarGrafico(response)
+                valorTotal(response)
+                montarPizza(response)
+                valorMaisCaro(response)
+                valorMaisBarato(response)
+
+            })
+        } 
+        else {
+            console.log(`Erro ao carregar gráfico`)
+        }
+        
+    });
+});
+
+
+
+
 </script>

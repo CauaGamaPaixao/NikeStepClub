@@ -29,7 +29,23 @@ function buscarMedidasEmTempoReal(idAquario) {
     return database.executar(instrucaoSql);
 }
 
+function listar(idUsuario){
+    var instrucaoSql = `SELECT Tenis.modelo AS Tenis,
+Tenis.valor AS Valor,
+Tenis.tipo AS Tipo
+FROM Usuario JOIN Inventario
+ON fkUsuario = idUsuario
+JOIN Tenis ON fkTenis = idTenis
+WHERE idUsuario = ${idUsuario}
+ORDER BY Tenis.valor DESC LIMIT 5`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+
+}
+
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    buscarMedidasEmTempoReal,
+    listar
 }

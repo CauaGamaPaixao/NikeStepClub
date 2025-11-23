@@ -9,6 +9,10 @@ router.get("/ultimas/:idUsuario", function (req, res) {
 
 router.get("/tempo-real/:idAquario", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
-})
+});
+
+router.get("/listar/:idUsuario", function (req, res){
+    medidaController.listar(req, res);
+});
 
 module.exports = router;

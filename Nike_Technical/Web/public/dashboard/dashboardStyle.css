@@ -242,26 +242,25 @@ body {
 .graficos {
     display: flex;
     flex-direction: row;
-    width: 1500px;
+    width: 1410px;
     height: 600px;
     justify-content: center;
 }
 
 .cardGrafico {
     display: flex;
-    flex-direction: column;
-    width: 1000px;
-    height: 1200px;
+    flex-direction: row;
+    width: 1400px;
+    height: 600px;
     justify-content: space-around;
     align-items: center;
-    margin-right: 90px;
+    
 }
 
 .cardColecao {
     display: flex;
     width: 500px;
     height: 1200px;
-
     justify-content: center;
     align-items: center;
 
@@ -270,7 +269,7 @@ body {
 .card {
     display: flex;
     flex-direction: column;
-    width: 800px;
+    width: 600px;
     height: 550px;
     border-radius: 10px;
     background-color: #FFFFFF;
@@ -328,6 +327,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 650px;
+    width: 520px;
     height: 450px;
 }
