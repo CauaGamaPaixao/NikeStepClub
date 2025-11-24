@@ -2,7 +2,6 @@ CREATE DATABASE NikeStepClub;
 USE NikeStepClub;
 
 
-
 CREATE TABLE Usuario (
 idUsuario INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR (45),
@@ -60,7 +59,6 @@ ORDER BY Tenis.valor;
 SELECT * FROM Usuario;
 
 DROP DATABASE NikeStepClub;
-
 
 
 

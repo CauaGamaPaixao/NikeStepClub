@@ -12,7 +12,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 450px;
-    height: 1570px;
+    height: 520px;
 }
 
 .secao1 {
@@ -43,7 +43,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 450px;
-    height: 1460px;
+    height: 520px;
 }
 
 .conteudoSecao2 {
@@ -51,7 +51,7 @@ body {
     flex-direction: column;
     background-color: #D3AF37;
     width: 450px;
-    height: 1120px;
+    height: 520px;
     justify-content: space-between
 }
 
@@ -209,6 +209,11 @@ body {
     border-radius: 10px;
     border: solid 3px #D3AF37;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.cardValor:hover{
+    transform: scale(1.1);
 }
 
 .valorTexto {
@@ -327,6 +332,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 520px;
+    width: 540px;
     height: 450px;
 }

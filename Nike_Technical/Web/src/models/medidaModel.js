@@ -37,7 +37,7 @@ FROM Usuario JOIN Inventario
 ON fkUsuario = idUsuario
 JOIN Tenis ON fkTenis = idTenis
 WHERE idUsuario = ${idUsuario}
-ORDER BY Tenis.valor DESC LIMIT 5`;
+ORDER BY Tenis.valor DESC`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

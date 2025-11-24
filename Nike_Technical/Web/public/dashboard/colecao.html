@@ -24,17 +24,17 @@
                     <div class="cardTitulo">Jordan 4 “University Blue”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/Jordan4UniBlue.png" alt="" width="220px"></div>
-                        <input id="jordan_jordan4uniblue" type="checkbox" onchange="limite(this)" name="selecao">
+                        <input id="jordan_jordan4uniblue" type="checkbox" name="selecao">
                     </div>
                     <div class="cardTitulo">Nike Kobe 6 Protro “Grinch Green Apple”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/KobeGrinch.png" alt="" width="220px"></div>
-                        <input id="nike_kobe6" type="checkbox" onchange="limite(this)" name="selecao">
+                        <input id="nike_kobe6" type="checkbox" name="selecao">
                     </div>
                     <div class="cardTitulo">Nike Ja 1 “Red Stardust”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/NikeJA1.png" alt="" width="220px"></div>
-                        <input id="nike_ja1" type="checkbox" onchange="limite(this)" name="selecao">
+                        <input id="nike_ja1" type="checkbox" name="selecao">
                     </div>
                 </div>
 
@@ -42,17 +42,17 @@
                     <div class="cardTitulo">Nike Air Zoom Alphafly 6 “Coconut Milk”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/NikeAlphafly.png" alt="" width="220px"></div>
-                        <input id="nike_airzoomalpha" type="checkbox" onchange="limite(this)" name="selecao">
+                        <input id="nike_airzoomalpha" type="checkbox" name="selecao">
                     </div>
                     <div class="cardTitulo">Air Max 95 “Neon Yellow”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/AirMax95.png" alt="" width="220px"></div>
-                        <input id="nike_arimaxneon" type="checkbox" onchange="limite(this)" name="selecao">
+                        <input id="nike_arimaxneon" type="checkbox" name="selecao">
                     </div>
                     <div class="cardTitulo">Nike Air Zoom Pegasus “Orange Crimson”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/AirZoom.png" alt="" width="220px"></div>
-                        <input id="nike_airzoompegasus" type="checkbox" onchange="limite(this)" name="selecao">
+                        <input id="nike_airzoompegasus" type="checkbox" name="selecao">
                     </div>
                 </div>
 
@@ -60,17 +60,17 @@
                     <div class="cardTitulo">Air Jordan 3 “Fire Red”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/AirJordan3.png" alt="" width="190px"></div>
-                        <input id="jordan_jordan3firered" type="checkbox" onchange="limite(this)" name="selecao">
+                        <input id="jordan_jordan3firered" type="checkbox" name="selecao">
                     </div>
                     <div class="cardTitulo">Air Jordan 4 “Thunder”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/AirJordan4Thunder.png" alt="" width="190px"></div>
-                        <input id="jordan_jordan4thunder" type="checkbox" onchange="limite(this)" name="selecao">
+                        <input id="jordan_jordan4thunder" type="checkbox" name="selecao">
                     </div>
                     <div class="cardTitulo">Nike Air Max TW “Racer Blue”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/AirMaxTW.png" alt="" width="220px"></div>
-                        <input id="nike_airmaxtw" type="checkbox" onchange="limite(this)" name="selecao">
+                        <input id="nike_airmaxtw" type="checkbox" name="selecao">
                     </div>
                 </div>
 
@@ -78,17 +78,17 @@
                     <div class="cardTitulo">Air Jordan 1 Low “Reverse Mocha”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/AirJordan1ReverseMocha.png" alt="" width="220px"></div>
-                        <input id="jordan_airjordan1low" type="checkbox" onchange="limite(this)" name="selecao">
+                        <input id="jordan_airjordan1low" type="checkbox" name="selecao">
                     </div>
                     <div class="cardTitulo">NOCTA x Nike Hot Step 2 “Total White “</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/NikeHotStep2.png" alt="" width="220px"></div>
-                        <input id="nike_hotstep" type="checkbox" onchange="limite(this)" name="selecao">
+                        <input id="nike_hotstep" type="checkbox" name="selecao">
                     </div>
                     <div class="cardTitulo">Air Jordan 1 High “Bred Toe”</div>
                     <div class="cardConteudo">
                         <div class="cardImagem"><img src="assets/AirJordan1BredToe.png" alt="" width="220px"></div>
-                        <input id="jordan_jordan1high" type="checkbox" onchange="limite(this)" name="selecao">
+                        <input id="jordan_jordan1high" type="checkbox" name="selecao">
                     </div>
                 </div>
             </div>
@@ -109,17 +109,6 @@
 
 <script>
     document.getElementById('botaoDashboard').disabled = true;
-
-        function limite(checkbox) {
-            var limiteSelecoes = 5;
-            var checkboxes = document.querySelectorAll('input[name="selecao"]:checked');
-            
-            if (checkboxes.length > limiteSelecoes) {
-                // Desfaz a seleção do checkbox atual
-                checkbox.checked = false;
-                alert('Você só pode selecionar no máximo ' + limiteSelecoes + ' opções.');
-            }
-        }
 
     // Valores dos Tênis
     var valorJordan4UniBlue = 2000;
@@ -157,6 +146,7 @@
     var idUser = sessionStorage.ID_USUARIO;
 
     function montar() {
+        var limiteSelecoes = 0
         if (!jordan_jordan4uniblue.checked &&
             !nike_kobe6.checked &&
             !nike_ja1.checked &&
@@ -177,67 +167,87 @@
                 listaModelos.push(Jordan4UniBlue)
                 mensagem += `<b style="color: #D3AF37">Jordan 4 University Blue</b> adicionado a coleção<br>`
                 valorTotal += valorJordan4UniBlue;
+                limiteSelecoes++;
             };
             if (nike_kobe6.checked) {
                 listaModelos.push(NikeKobe06)
                 mensagem += `<b style="color: #D3AF37">Kobe 06</b> adicionado a coleção<br>`
                 valorTotal += valorNikeKobe06;
+                limiteSelecoes++;
             };
             if (nike_ja1.checked) {
                 listaModelos.push(NikeJA1)
                 mensagem += `<b style="color: #D3AF37">Nike JA1</b> adicionado a coleção<br>`
                 valorTotal += valorNikeJA1;
+                limiteSelecoes++;
             };
             if (nike_airzoomalpha.checked) {
                 listaModelos.push(NikeAirZoomAlpha)
                 mensagem += `<b style="color: #D3AF37">Nike Air Zoom Alphafly</b> adicionado a coleção<br>`
                 valorTotal += valorNikeAirZoomAlpha;
+                limiteSelecoes++;
             };
             if (nike_arimaxneon.checked) {
                 listaModelos.push(NikeAirMaxNeon)
                 mensagem += `<b style="color: #D3AF37">Nike Air Max Neon Yellow</b> adicionado a coleção<br>`
                 valorTotal += valorNikeAirMaxNeon;
+                limiteSelecoes++;
             };
             if (nike_airzoompegasus.checked) {
                 listaModelos.push(NikeAirZoomPegasus)
                 mensagem += `<b style="color: #D3AF37">Nike Air Zoom Pegasus</b> adicionado a coleção<br>`
                 valorTotal += valorNikeAirZoomPegasus;
+                limiteSelecoes++;
             };
             if (jordan_jordan3firered.checked) {
                 listaModelos.push(Jordan3FireRed)
                 mensagem += `<b style="color: #D3AF37">Jordan 3 Fire Red</b> adicionado a coleção<br>`
                 valorTotal += valorJordan3FireRed;
+                limiteSelecoes++;
             };
             if (jordan_jordan4thunder.checked) {
                 listaModelos.push(Jordan4Thunder)
                 mensagem += `<b style="color: #D3AF37">Jordan 4 Thunder</b> adicionado a coleção<br>`
                 valorTotal += valorJordan4Thunder;
+                limiteSelecoes++;
             };
             if (nike_airmaxtw.checked) {
                 listaModelos.push(NikeAirMaxTW)
                 mensagem += `<b style="color: #D3AF37">Air Max TW</b> adicionado a coleção<br>`
                 valorTotal += valorNikeAirMaxTW;
+                limiteSelecoes++;
             };
             if (jordan_airjordan1low.checked) {
                 listaModelos.push(Jordan1Low)
                 mensagem += `<b style="color: #D3AF37">Jordan 1 Low</b> adicionado a coleção<br>`
                 valorTotal += valorJordan1Low;
+                limiteSelecoes++;
             };
             if (nike_hotstep.checked) {
                 listaModelos.push(NikeHotStep)
                 mensagem += `<b style="color: #D3AF37">Nike Hot Step</b> adicionado a coleção<br>`
                 valorTotal += valorNikeHotStep;
+                limiteSelecoes++;
             };
             if (jordan_jordan1high.checked) {
                 listaModelos.push(Jordan1High)
                 mensagem += `<b style="color: #D3AF37">Jordan 1 High</b> adicionado a coleção<br>`
                 valorTotal += valorJordan1High;
+                limiteSelecoes++;
             };
+            if (limiteSelecoes != 5){
+                listaModelos = [];
+                mensagem = ``
+                alert(`Você deve selecionar 5 modelos`)
+            } else {
+                div_mensagem.innerHTML = mensagem;
+                document.getElementById('botaoMontar').disabled = true;
+                document.getElementById('botaoDashboard').disabled = false;
+                console.log(listaModelos)
+            }
 
 
-            div_mensagem.innerHTML = mensagem;
-            document.getElementById('botaoMontar').disabled = true;
-            document.getElementById('botaoDashboard').disabled = false;
+            
         }
     }
 

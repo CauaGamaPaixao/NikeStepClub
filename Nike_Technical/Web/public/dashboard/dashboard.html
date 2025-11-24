@@ -86,13 +86,13 @@
                 <div class="card">
                     <div class="grafico">
                         <h3>Comparativo de Preços</h3>
-                        <canvas id="priceChart"></canvas>
+                        <canvas id="graficoBarra"></canvas>
                     </div>
                 </div>
                 <div class="card">
                     <div class="grafico">
                         <h3>Foco da coleção</h3>
-                        <canvas id="focusChart"></canvas>
+                        <canvas id="graficoPizza"></canvas>
                     </div>
                 </div>
             </div>
@@ -150,78 +150,64 @@
             var totalTipo = casual + esporte;
             var casualPct = ((casual / totalTipo) * 100).toFixed(0);
             var esportivaPct = ((esporte / totalTipo) * 100).toFixed(0);
-            const focusCtx = document.getElementById('focusChart').getContext('2d');
-            new Chart(focusCtx, {
+
+            var graficoPizza = document.getElementById('graficoPizza').getContext('2d');
+            
+            new Chart(graficoPizza, {
             type: 'doughnut',
             data: {
                 labels: [`Casual (${casualPct}%)`, `Esportiva (${esportivaPct}%)`],
                 datasets: [{
-                    label: 'Valor (R$)',
                     data: [casual, esporte],
-                    backgroundColor: ['#f59e0b', '#10b981'], // Ouro para Casual, Verde para Esportiva
+                    backgroundColor: ['#D3AF37', 'darkgreen'], 
                     hoverOffset: 4
                 }]
             },
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: {
-                            font: { size: 14 }
-                        }
+                scales: {
+                    x: {
+                        beginAtZero: true
                     },
-                    title: {
-                        display: true,
-                        font: { size: 16 }
-                    }
-                }
+                    y: {
+                        title: {
+                            display: true,
+                            text: '(%)'
+                        },
+                        beginAtZero: true,
+                    },
+                },
             }
-        });
+      });
     }
 
 
     function montarGrafico (dados){
-        const priceCtx = document.getElementById('priceChart').getContext('2d');
-        new Chart(priceCtx, {
+        var graficoBarra = document.getElementById('graficoBarra').getContext('2d');
+        new Chart(graficoBarra, {
             type: 'bar',
             data: {
                 labels: [dados[0].Tenis, dados[1].Tenis, dados[2].Tenis, dados[3].Tenis, dados[4].Tenis],
                 datasets: [{
                     label: 'Valor (R$)',
                     data: [dados[0].Valor, dados[1].Valor, dados[2].Valor, dados[3].Valor, dados[4].Valor],
-                    backgroundColor: 'rgba(245, 158, 11, 0.8)',
-                    borderColor: 'rgba(245, 158, 11, 1)',
+                    backgroundColor: '#D3AF37',
+                    borderColor: '#D3AF37',
                     borderWidth: 1,
                     borderRadius: 4,
                 }]
             },
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false },
-                    title: {
-                        display: true,
-                        font: { size: 14 }
-                    }
-                },
                 scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: { drawBorder: false },
-                        ticks: {
-                            callback: function (value) {
-                                // Formata o valor como moeda
-                                return 'R$ ' + value.toLocaleString('pt-BR');
-                            }
-                        }
-                    },
                     x: {
-                        grid: { display: false }
-                    }
-                }
+                        beginAtZero: true
+                    },
+                    y: {
+                        title: {
+                            display: false,
+                        },
+                        beginAtZero: true,
+                    },
+                },
             }
         });
     }
