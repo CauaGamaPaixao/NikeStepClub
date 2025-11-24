@@ -182,5 +182,8 @@ input[type=checkbox]{
     align-items: center;
 }
 
+.botoes a{
+    text-decoration: none;
+}
 
 /* CONTEUDO FIM */
