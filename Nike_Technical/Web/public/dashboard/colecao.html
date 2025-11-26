@@ -141,7 +141,9 @@
     var mensagemRelatorio = ``;
     var valorTotal = 0;
 
-    listaModelos = [];
+    var listaModelos = [];
+    var colecao = [];
+    var modelos = ``;
 
     var idUser = sessionStorage.ID_USUARIO;
 
@@ -244,6 +246,8 @@
                 document.getElementById('botaoMontar').disabled = true;
                 document.getElementById('botaoDashboard').disabled = false;
                 console.log(listaModelos)
+                colecao = [idUser, listaModelos];
+                modelos = colecao[1];
             }
 
 
@@ -251,11 +255,11 @@
         }
     }
 
-    var colecao = [idUser, listaModelos];
+    
 
     var instrucao = ``;
     var listaInstrucao = [];
-    var modelos = colecao[1];
+    
 
 
     function dashboard() {
